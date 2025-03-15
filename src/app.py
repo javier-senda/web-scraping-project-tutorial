@@ -17,7 +17,6 @@ else:
 
 tables= soup.find("table")
 
-
 trows = tables.find_all("tr")
 headers = [header.text.strip() for header in trows[0].find_all("th")]
 
@@ -32,7 +31,7 @@ df = pd.DataFrame(data, columns=headers)
 def process_revenue(column):
     if "B" in column or '$' in column:
         column = float(column.replace("B", "").replace("$", ""))
-        return column
+    return column
     
 def process_change(column):
     if "%" in column:
@@ -85,7 +84,6 @@ plt.ylabel("Porcentaje de cambio de los beneficios")
 plt.title("Evolución de los cambios en los beneficios por año")
 plt.savefig("Evolución de los cambios en los beneficios por año")
 plt.show()
-
 
 fig, ax = plt.subplots(figsize=(10, 5))
 
